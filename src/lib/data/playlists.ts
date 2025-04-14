@@ -1,3 +1,9 @@
+export interface PlaylistCollaborator {
+  userId: string;
+  role: 'editor' | 'viewer';
+  addedAt: string;
+}
+
 export interface Playlist {
   id: string;
   title: string;
@@ -8,6 +14,8 @@ export interface Playlist {
   createdAt: string;
   description: string;
   artworkUrl: string;
+  collaborators: PlaylistCollaborator[];
+  isCollaborative: boolean;
 }
 
 export const playlists: Playlist[] = [
@@ -20,7 +28,20 @@ export const playlists: Playlist[] = [
     isLocked: true,
     createdAt: "2023-09-10T23:11:45Z",
     description: "The perfect playlist for those late-night coding sessions or relaxing after a long day.",
-    artworkUrl: "https://images.unsplash.com/photo-1520262494112-9fe481d36ec3"
+    artworkUrl: "https://images.unsplash.com/photo-1520262494112-9fe481d36ec3",
+    collaborators: [
+      {
+        userId: "3",
+        role: "editor",
+        addedAt: "2023-09-15T10:31:22Z"
+      },
+      {
+        userId: "5",
+        role: "viewer",
+        addedAt: "2023-09-17T14:45:18Z"
+      }
+    ],
+    isCollaborative: true
   },
   {
     id: "2",
@@ -31,7 +52,9 @@ export const playlists: Playlist[] = [
     isLocked: true,
     createdAt: "2023-08-28T16:42:33Z",
     description: "High-energy tracks to keep you motivated during your workout routine.",
-    artworkUrl: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5"
+    artworkUrl: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5",
+    collaborators: [],
+    isCollaborative: false
   },
   {
     id: "3",
@@ -42,7 +65,15 @@ export const playlists: Playlist[] = [
     isLocked: false,
     createdAt: "2023-09-05T11:27:19Z",
     description: "Acoustic tracks to unwind and relax. Perfect for a Sunday morning.",
-    artworkUrl: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b"
+    artworkUrl: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b",
+    collaborators: [
+      {
+        userId: "1",
+        role: "editor",
+        addedAt: "2023-09-10T08:22:45Z"
+      }
+    ],
+    isCollaborative: true
   },
   {
     id: "4",
@@ -53,7 +84,9 @@ export const playlists: Playlist[] = [
     isLocked: true,
     createdAt: "2023-09-15T14:08:56Z",
     description: "Cutting-edge electronic music pushing the boundaries of sound design.",
-    artworkUrl: "https://images.unsplash.com/photo-1557672172-298e090bd0f1"
+    artworkUrl: "https://images.unsplash.com/photo-1557672172-298e090bd0f1",
+    collaborators: [],
+    isCollaborative: false
   },
   {
     id: "5",
@@ -64,6 +97,19 @@ export const playlists: Playlist[] = [
     isLocked: true,
     createdAt: "2023-08-25T19:33:21Z",
     description: "A collection of timeless jazz classics and modern interpretations.",
-    artworkUrl: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae"
+    artworkUrl: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae",
+    collaborators: [
+      {
+        userId: "2",
+        role: "viewer",
+        addedAt: "2023-09-01T11:17:32Z"
+      },
+      {
+        userId: "4",
+        role: "editor",
+        addedAt: "2023-09-03T16:42:08Z"
+      }
+    ],
+    isCollaborative: true
   }
 ]; 

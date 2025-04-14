@@ -1,4 +1,4 @@
-export type TransactionType = 'upvote' | 'upload_reward' | 'unlock_playlist' | 'daily_login';
+export type TransactionType = 'upvote' | 'upload_reward' | 'unlock_playlist' | 'daily_login' | 'tip';
 
 export interface NotesTransaction {
   id: string;
@@ -7,6 +7,7 @@ export interface NotesTransaction {
   type: TransactionType;
   refId?: string; // optional reference to track or playlist ID
   timestamp: string;
+  recipientId?: string; // added for tip transactions
 }
 
 export const notesTransactions: NotesTransaction[] = [
@@ -71,5 +72,41 @@ export const notesTransactions: NotesTransaction[] = [
     amount: 1,
     type: "daily_login",
     timestamp: "2023-09-18T10:15:32Z"
+  },
+  {
+    id: "9",
+    userId: "2",
+    amount: -5,
+    type: "tip",
+    refId: "1", // track id
+    recipientId: "1", // recipient user id
+    timestamp: "2023-09-19T14:28:51Z"
+  },
+  {
+    id: "10",
+    userId: "1", 
+    amount: 5,
+    type: "tip",
+    refId: "1", // same track id
+    recipientId: "2", // sender user id (for reference)
+    timestamp: "2023-09-19T14:28:51Z"
+  },
+  {
+    id: "11",
+    userId: "3",
+    amount: -10,
+    type: "tip",
+    refId: "4", // track id
+    recipientId: "5", // recipient user id
+    timestamp: "2023-09-20T11:15:32Z"
+  },
+  {
+    id: "12",
+    userId: "5", 
+    amount: 10,
+    type: "tip",
+    refId: "4", // same track id
+    recipientId: "3", // sender user id (for reference)
+    timestamp: "2023-09-20T11:15:32Z"
   }
 ]; 
